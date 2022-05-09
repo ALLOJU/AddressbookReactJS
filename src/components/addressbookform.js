@@ -111,8 +111,7 @@ const AddressBookForm = (props) => {
         let errors = {...validation}
         let isError=false;
         //first Name validation
-        const fullName =
-        "/^[A-Z]{1}[a-z]{2,}$/";
+        const fullName ="^[A-Z]{1}[a-z]{2,}[ ][A-Z]{1}[a-z]{2,}$";
       if (!user.name.trim()) {
         errors.name = "Name is required";
       } else if (!user.name.match(fullName)) {
@@ -120,26 +119,53 @@ const AddressBookForm = (props) => {
       } else {
         errors.name = "";
       }
-        if (!user.phoneNumber.trim()) {
-           
-          errors.phoneNumber = "Phone number is required";
-        } else {
-          errors.phoneNumber = "";
-        }
+      //validation for phone number
+      const mobileNo="^([0-9]{2}[\\s]){1}[0-9]{9,10}$";
+        if(!user.phoneNumber.trim()) {
+           errors.phoneNumber="Phone number is Required";
+        } else if (!user.phoneNumber.match(mobileNo)) {
+            errors.phoneNumber = "Please enter a valid Phone number ";
+          } else {
+            errors.phoneNumber = "";
+          }
+       //validation for address
+       const addr="^[a-zA-Z0-9#,&]{4,}$";
         if (!user.address.trim()) {
            
             errors.address = "Address is required";
-          } else {
-            errors.address = "";
+          }else if (!user.address.match(addr)) {
+            errors.phoneNumber = "Please enter a valid Address ";
           }
           
+          else {
+            errors.address = "";
+          }
+          //validation for city
           if (!user.city.trim()) {
            
             errors.city = "City is required";
           } else {
             errors.city = "";
           }
-    
+          //validation for state
+          if (!user.state.trim()) {
+           
+            errors.state = "State is required";
+          } else {
+            errors.state = "";
+          }
+           //validation for Zip
+       const zipCode="^[0-9]{3}\\s{0,1}[0-9]{3}$";
+       if (!user.zip.trim()) {
+          
+           errors.zip = "Zip code is required";
+         }else if (!user.zip.match(zipCode)) {
+            errors.zip ="please enter valid zip code"    
+         }
+         
+         else {
+           errors.zip = "";
+         }
         setValidation(errors);
         
       };
@@ -171,7 +197,7 @@ const AddressBookForm = (props) => {
                             <label htmlFor="name" className="label text">Full Name</label>
                             <br/>
                                 <input type="text" className="input" id="name" name="name" value={user.name} onChange={(e) => changeValue(e)} placeholder="Full Name"
-                                       autoComplete="off" />
+                                       autoComplete="off" required />
                                    {/* <error className="error">{user.error.name}</error> */}
                         </div>
                         {validation.name && <p>{validation.name}</p>}
@@ -181,7 +207,7 @@ const AddressBookForm = (props) => {
                             <br/>
                                 <input type="tel" className="input" id="phoneNumber" name="phoneNumber" value={user.phoneNumber} onChange={changeValue}
                                        placeholder="Phone Number"
-                                       autoComplete="off" />
+                                       autoComplete="off" required />
                                      {/* <error className="error">{user.error.phoneNumber}</error> */}
                         </div>
                         {validation.phoneNumber && <p>{validation.phoneNumber}</p>}
@@ -189,7 +215,7 @@ const AddressBookForm = (props) => {
                         <div className="row_content">
                             <label htmlFor="address" className="label text">Address</label>
                             <br/>
-                                <textarea name="address" id="address" placeholder="Address" autoComplete="off" value={user.address} onChange={changeValue}
+                                <textarea name="address" id="address" placeholder="Address" autoComplete="off" value={user.address} onChange={changeValue} required
                                           ></textarea>
                                  {/* <error className="error">{user.error.Address}</error> */}
                         </div> 
@@ -198,7 +224,7 @@ const AddressBookForm = (props) => {
                         <div className="row_content">
                             <div className="column_constrains">
                                 <div className="column_content">
-                                    <label htmlFor="city" className="label text">City</label>
+                                    <label htmlFor="city" className="label text" required >City</label>
                                     <br/>
                                         <select name="city" id="city" value={user.city} onChange={changeValue}  >
                                             <option selected  value="Select City">Select City</option>
@@ -216,7 +242,7 @@ const AddressBookForm = (props) => {
                                 <div className="column_content">
                                     <label htmlFor="state" className="label text">State</label>
                                     <br/>
-                                        <select name="state" id="state"value={user.state} onChange={changeValue}>
+                                        <select name="state" id="state"value={user.state} required onChange={changeValue}>
                                             <option selected  value="Select State">Select State</option>
                                             <option value="Andhra Pradesh">Andhra Pradesh</option>
                                             <option value="Delhi">Delhi</option>
@@ -225,16 +251,20 @@ const AddressBookForm = (props) => {
                                             <option value="Maharashtra">Maharashtra</option>
                                             <option value="Tamil Nadu">Tamil Nadu</option>
                                         </select>
-                                        <error className="error">{user.error.state}</error>
+                                        {/* <error className="error">{user.error.state}</error> */}
                                 </div>
+                                {validation.state && <p>{validation.state}</p>}
+                                {validation.state && console.log(validation)}
                                 <div className="column_content">
                                     <label htmlFor="zip" className="label text">Zip code</label>
                                     <br/>
                                         <input type="text" className="input zipcode" id="zip" name="zip"value={user.zip} onChange={changeValue}
-                                               autoComplete="off" placeholder="Zip Code"
+                                               autoComplete="off" placeholder="Zip Code" required
                                                />
-                                             <error className="error">{user.error.zip}</error>
+                                             {/* <error className="error">{user.error.zip}</error> */}
                                 </div>
+                                {validation.zip && <p>{validation.zip}</p>}
+                                {validation.zip && console.log(validation)}
                             </div>
                         </div>
                         <div className="button_content">
