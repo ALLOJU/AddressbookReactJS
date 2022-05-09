@@ -1,0 +1,67 @@
+{
+  "addressbook": [
+    {
+      "name": "Mounika",
+      "phoneNumber": "9866349586",
+      "address": "Girmajipet",
+      "city": "warangal",
+      "state": "telangana",
+      "zip": "506002",
+      "id": 1
+    },
+    {
+      "name": "Priyanka",
+      "phoneNumber": "6535346",
+      "address": "hyderabad",
+      "city": "Delhi",
+      "state": "Telangana",
+      "zip": "506002",
+      "id": 4
+    },
+    {
+      "name": "priya",
+      "phoneNumber": "35476",
+      "address": "sdg",
+      "city": "Warangal",
+      "state": "Telangana",
+      "zip": "564537",
+      "id": 5
+    },
+    {
+      "name": "Veekshan",
+      "phoneNumber": "9832534",
+      "address": "sadgh",
+      "city": "Warangal",
+      "state": "Telangana",
+      "zip": "506002",
+      "id": 7
+    },
+    {
+      "name": "mounika",
+      "phoneNumber": "789863452",
+      "address": "sdfdg",
+      "city": "Warangal",
+      "state": "Telangana",
+      "zip": "50600",
+      "id": 8
+    },
+    {
+      "name": "Mounika",
+      "phoneNumber": "787564",
+      "address": "asdb",
+      "city": "Bangalore",
+      "state": "Delhi",
+      "zip": "564564",
+      "id": 9
+    },
+    {
+      "name": "",
+      "phoneNumber": "",
+      "address": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "id": 10
+    }
+  ]
+}
