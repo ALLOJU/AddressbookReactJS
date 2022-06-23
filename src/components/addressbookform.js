@@ -36,7 +36,7 @@ const AddressBookForm = (props) => {
 
     const getPersonById = (id) => {
         addressbookservice.getPerson(id).then((response) => {
-            let obj = response.data;
+            let obj = response.data.data;
             console.log(obj);
             setData(obj);
         }).catch((error) => {
@@ -48,8 +48,8 @@ const AddressBookForm = (props) => {
        setUser({
             ...user,
             ...obj,
-            name: obj.name,
-            phoneNumber:obj.phoneNumber,
+            name: obj.fullName,
+            phoneNumber:obj.phone,
             address: obj.address,
             city:obj.city,
             state:obj.state,
@@ -70,8 +70,8 @@ const AddressBookForm = (props) => {
       
      
         let object = {
-            name: user.name,
-            phoneNumber:user.phoneNumber,
+            fullName: user.name,
+            phone:user.phoneNumber,
             address: user.address,
             city:user.city,
             state:user.state,
@@ -111,7 +111,7 @@ const AddressBookForm = (props) => {
         let errors = {...validation}
         let isError=false;
         //first Name validation
-        const fullName ="^[A-Z]{1}[a-z]{2,}[ ][A-Z]{1}[a-z]{2,}$";
+        const fullName ="^[A-Z]{1}[a-z]{2,}$";
       if (!user.name.trim()) {
         errors.name = "Name is required";
       } else if (!user.name.match(fullName)) {

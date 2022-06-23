@@ -3,21 +3,21 @@ import config from '../config/config';
 class AddressBookService{
     baseUrl=config.baseUrl;
     addPerson(data){
-      return axios.post(`${this.baseUrl}addressbook`, data);
+      return axios.post(`${this.baseUrl}/create`, data);
     }
     getAllPersons() {
-      return axios.get(`${this.baseUrl}addressbook`);
+      return axios.get(`${this.baseUrl}/get`);
     }
-    getPerson(personID) {
-      return axios.get(`${this.baseUrl}addressbook/${personID}`);
+    getPerson(contactId) {
+      return axios.get(`${this.baseUrl}/get/${contactId}`);
   }
   
-  updatePerson(personID,data) {
-      return axios.put(`${this.baseUrl}addressbook/${personID}`, data);
+  updatePerson(contactId,data) {
+      return axios.put(`${this.baseUrl}/update/${contactId}`, data);
   }
   
-  deletePerson(personID) {
-      return axios.delete(`${this.baseUrl}addressbook/${personID}`);
+  deletePerson(contactId) {
+      return axios.delete(`${this.baseUrl}/delete/${contactId}`);
   }
   }
   export default new AddressBookService()

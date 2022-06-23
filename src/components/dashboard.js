@@ -14,7 +14,7 @@ function Dashboard() {
     
     const getAllPersons= () => {
        addressbookservice.getAllPersons().then(person => {
-           const allPersons = person.data;
+           const allPersons = person.data.data;
            setPerson(allPersons);
        }).catch((error) => {
            alert(error);

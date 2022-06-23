@@ -1,5 +1,5 @@
 module.exports={
-    baseUrl:'http://localhost:3006/'
+    baseUrl:'http://localhost:8080/addressbook'
 
 
 }
